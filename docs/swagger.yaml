@@ -1,0 +1,188 @@
+definitions:
+  api.ResponseJson:
+    properties:
+      code:
+        type: integer
+      data: {}
+      error:
+        type: string
+      msg:
+        type: string
+      time:
+        type: string
+    type: object
+  entuser.CreateBody:
+    properties:
+      age:
+        maximum: 200
+        type: integer
+      createdAt:
+        type: string
+      gender:
+        enum:
+        - 0
+        - 1
+        - 2
+        type: integer
+      id:
+        type: integer
+      name:
+        maxLength: 50
+        type: string
+      password:
+        type: string
+      phone:
+        type: string
+    required:
+    - age
+    - gender
+    - name
+    - password
+    - phone
+    type: object
+  entuser.UpdateBody:
+    properties:
+      age:
+        maximum: 200
+        type: integer
+      gender:
+        enum:
+        - 0
+        - 1
+        - 2
+        type: integer
+      id:
+        type: integer
+      name:
+        maxLength: 50
+        type: string
+      updatedAt:
+        type: string
+    type: object
+info:
+  contact: {}
+  description: 接口详情
+  title: gin-restful-api模板
+  version: 1.0.0
+paths:
+  /api/v1/user:
+    get:
+      description: 查询用户列表
+      parameters:
+      - description: 手机号
+        in: formData
+        name: phone
+        type: string
+      - description: 名字
+        in: formData
+        name: name
+        type: string
+      - description: 年龄
+        in: formData
+        name: age
+        type: integer
+      - description: 性别
+        in: formData
+        name: gender
+        type: integer
+      responses:
+        "0":
+          description: 请求成功
+          schema:
+            $ref: '#/definitions/api.ResponseJson'
+        "1":
+          description: 请求失败
+          schema:
+            $ref: '#/definitions/api.ResponseJson'
+      summary: 查询用户列表
+      tags:
+      - Api.User
+    post:
+      description: 新增用户
+      parameters:
+      - description: body
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/entuser.CreateBody'
+      responses:
+        "0":
+          description: 请求成功
+          schema:
+            $ref: '#/definitions/api.ResponseJson'
+        "1":
+          description: 请求失败
+          schema:
+            $ref: '#/definitions/api.ResponseJson'
+      summary: 新增用户
+      tags:
+      - Api.User
+  /api/v1/user/{id}:
+    delete:
+      description: 删除用户
+      parameters:
+      - description: 用户id
+        in: path
+        name: id
+        required: true
+        type: integer
+      responses:
+        "0":
+          description: 请求成功
+          schema:
+            type: string
+        "1":
+          description: 请求失败
+          schema:
+            type: string
+      summary: 删除用户
+      tags:
+      - Api.User
+    get:
+      description: 查询用户详情
+      parameters:
+      - description: 用户id
+        in: path
+        name: id
+        required: true
+        type: integer
+      responses:
+        "0":
+          description: 请求成功
+          schema:
+            $ref: '#/definitions/api.ResponseJson'
+        "1":
+          description: 请求失败
+          schema:
+            $ref: '#/definitions/api.ResponseJson'
+      summary: 查询用户详情
+      tags:
+      - Api.User
+    put:
+      description: 更新用户
+      parameters:
+      - description: 用户id
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: body
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/entuser.UpdateBody'
+      responses:
+        "0":
+          description: 请求成功
+          schema:
+            $ref: '#/definitions/api.ResponseJson'
+        "1":
+          description: 请求失败
+          schema:
+            $ref: '#/definitions/api.ResponseJson'
+      summary: 更新用户
+      tags:
+      - Api.User
+swagger: "2.0"
