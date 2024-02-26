@@ -17,15 +17,15 @@
     - go get -u gorm.io/driver/postgres
     - go get -u gorm.io/driver/mysql
     - go get -u gorm.io/driver/sqlite
-- cobra
-  - go get -u github.com/spf13/cobra@latest
-- redis
-  - go get -u github.com/go-redis/redis/v8
-- jwt
-  - go get github.com/golang-jwt/jwt/v4
 - swagger
   - go get -u github.com/swaggo/swag/cmd/swag
   - go install github.com/swaggo/swag/cmd/swag@latest
   - gin-swagger
     - go get -u github.com/swaggo/gin-swagger
     - go get -u github.com/swaggo/files
+- cobra
+  - go get -u github.com/spf13/cobra@latest
+- jwt
+  - go get github.com/golang-jwt/jwt/v4
+- redis
+  - go get -u github.com/go-redis/redis/v8
