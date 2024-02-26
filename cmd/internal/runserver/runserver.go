@@ -59,6 +59,6 @@ func Start(port string) {
 
 func Clean() {
 	fmt.Println(time.Now())
-	fmt.Println("Exiting server")
+	fmt.Println("Exiting the server.....")
 	// TODO:
 }
